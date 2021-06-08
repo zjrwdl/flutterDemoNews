@@ -1,0 +1,29 @@
+PODS:
+  - Bugly (2.5.90)
+  - bugly_crash (0.0.1):
+    - Bugly
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - bugly_crash (from `.symlinks/plugins/bugly_crash/ios`)
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  trunk:
+    - Bugly
+
+EXTERNAL SOURCES:
+  bugly_crash:
+    :path: ".symlinks/plugins/bugly_crash/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  Bugly: 88bc32c0acc6fef7b74d610f0319ee7560d6b9fe
+  bugly_crash: 85bc2d053086f64963b9d1f842ea997462b7caf5
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+
+PODFILE CHECKSUM: ffd7293eb7d5907b54a367fd400872baeef513a5
+
+COCOAPODS: 1.10.1
