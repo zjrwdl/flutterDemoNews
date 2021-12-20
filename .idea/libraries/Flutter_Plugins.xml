@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
-      <root url="file://$USER_HOME$/zhp/flutter/flutter/.pub-cache/hosted/pub.flutter-io.cn/bugly_crash-0.0.6" />
+      <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/bugly_crash-0.0.6" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

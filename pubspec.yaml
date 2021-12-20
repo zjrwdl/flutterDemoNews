@@ -31,6 +31,7 @@ dependencies:
   http: ^0.13.3
   json_annotation: ^2.0.0
   bugly_crash: ^0.0.6
+  dio: ^4.0.4 # check for latest version.
 
 
 dev_dependencies:

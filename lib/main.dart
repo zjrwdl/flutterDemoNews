@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_news_app/widget/listview_fenye.dart';
 import 'package:flutter_news_app/widget/top_bar_page.dart';
 import 'dart:async';
 import 'package:bugly_crash/bugly.dart';
@@ -172,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body:
-      new TopBarPage(),
+      new ListviewFenye(),
     );
   }
 }
