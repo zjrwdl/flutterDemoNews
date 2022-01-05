@@ -118,9 +118,9 @@ class MeemoRotationTransition extends AnimatedWidget {
       return (turns.value * math.pi) / 15;
     }else if(value > 0.25 && value <= 0.5){
       return ((0.5 - turns.value) * math.pi) / 15;
-    }else if(value > 0.25 && value <= 0.5){
+    }else if(value > 0.5 && value <= 0.75){
       return -((turns.value - 0.5) * math.pi) / 15;
-    }else if(value > 0.5  && value <= 1){
+    }else if(value > 0.75  && value <= 1){
       return -((1 - turns.value) * math.pi) / 15;
     }
     return 0;
