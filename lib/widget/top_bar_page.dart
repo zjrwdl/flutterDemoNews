@@ -14,9 +14,9 @@ class TopBarPage extends StatefulWidget {
 }
 
 class TopBarPageState extends State<TopBarPage> with SingleTickerProviderStateMixin {
-  TabController _tabController;
-  List<String> _items;
-  List _httpItems;
+  late TabController _tabController;
+  late List<String> _items;
+  late List _httpItems;
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_news_app/widget/anim/offset_anim.dart';
 import 'package:flutter_news_app/widget/listview_fenye.dart';
 import 'package:flutter_news_app/widget/top_bar_page.dart';
 import 'dart:async';
@@ -15,7 +16,7 @@ Future<Null> main() async {
   //一、这里配置上报APP未捕获到的异常，业务可以自由决定上报的信息
   FlutterError.onError = (FlutterErrorDetails details) async {
     print("zone current print error");
-    Zone.current.handleUncaughtError(details.exception, details.stack);
+    Zone.current.handleUncaughtError(details.exception, details.stack!);
   };
 
   runZonedGuarded<Future<Null>>(() async {
@@ -45,13 +46,12 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -61,8 +61,6 @@ class MyHomePage extends StatefulWidget {
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -173,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body:
-      new ListviewFenye(),
+      new OffsetAnim(),
     );
   }
 }

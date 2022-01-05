@@ -14,13 +14,13 @@ enum SlideDirection {
 }
 
 class ListviewFenyeState extends State<ListviewFenye> with SingleTickerProviderStateMixin {
-  TabController _tabController;
-  List<String> _items;
-  List _currentPageItems;
+  TabController? _tabController;
+  List<String> _items = [];
+  List? _currentPageItems;
   int page = 0;
   int onePageItems = 5;
   double lastDownY = 0;
-  SlideDirection slipDirection;
+  SlideDirection? slipDirection;
 
   void _getMoreData(SlideDirection direction) async {
     setState(() {
@@ -28,16 +28,18 @@ class ListviewFenyeState extends State<ListviewFenye> with SingleTickerProviderS
         print("slide fail, already in top");
         return;
       }
-      if ((page + 1)* onePageItems >= _items.length && direction == SlideDirection.down) {
+      if (((page + 1)* onePageItems >= _items.length) && direction == SlideDirection.down) {
         print("slide fail, already in bottom");
         return;
       }
       direction == SlideDirection.down ? page++ : page--;
       int start = page * onePageItems;
-      _currentPageItems.clear();
-      int minNum = _items.length <= onePageItems + start ? _items.length : onePageItems + start;
+      _currentPageItems?.clear();
+      int minNum = 0;
+      if(_items.length <= onePageItems + start)
+      _items.length <= onePageItems + start ? _items.length : onePageItems + start;
       for(int i = start; i < minNum; i++) {
-        _currentPageItems.add(_items[i]);
+        _currentPageItems?.add(_items[i]);
       }
     });
   }
@@ -61,13 +63,13 @@ class ListviewFenyeState extends State<ListviewFenye> with SingleTickerProviderS
             lastDownY = position;
           },
           onPointerUp: (event) {
-            _getMoreData(slipDirection);
+            _getMoreData(slipDirection!);
           },
           child: new ListView.builder(
-            itemCount: _currentPageItems.length,
+            itemCount: _currentPageItems?.length,
             itemBuilder: (context,index){
               return ListTile(
-                title: Text('${_currentPageItems[index]}'),
+                title: Text('${_currentPageItems?[index]}'),
               );
             },
           )
@@ -82,16 +84,16 @@ class ListviewFenyeState extends State<ListviewFenye> with SingleTickerProviderS
     super.initState();
     _tabController = new TabController(length: 2, vsync: this);
     _items = List.generate(100, (i) => "item $i");
-    _currentPageItems = List();
-    _currentPageItems.clear();
+    _currentPageItems = [];
+    _currentPageItems?.clear();
     for(int i = 0; i < onePageItems; i++) {
-      _currentPageItems.add(_items[i]);
+      _currentPageItems?.add(_items[i]);
     }
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 
