@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_news_app/widget/anim/offset_anim.dart';
+import 'package:flutter_news_app/widget/anim/shake_anim.dart';
 import 'package:flutter_news_app/widget/listview_fenye.dart';
 import 'package:flutter_news_app/widget/top_bar_page.dart';
 import 'dart:async';
@@ -171,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body:
-      new OffsetAnim(),
+      new ShakeAnim(),
     );
   }
 }
