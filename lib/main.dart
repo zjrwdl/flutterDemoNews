@@ -173,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body:
-      new CurveFlyAnim(),
+      new AvartarBubbleAnim(avartarList: ["https://img0.baidu.com/it/u=2553242400,2080369090&fm=26&fmt=auto","https://img0.baidu.com/it/u=3872011780,2725169074&fm=26&fmt=auto","https://img2.baidu.com/it/u=1813115944,1577678930&fm=26&fmt=auto"],),
     );
   }
 }
