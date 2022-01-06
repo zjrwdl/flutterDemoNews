@@ -8,79 +8,72 @@ class CurveFlyAnim extends StatefulWidget {
 
 class _CurveFlyAnimState extends State<CurveFlyAnim>
     with TickerProviderStateMixin {
-  //平移动画控制器
-  late AnimationController mAnimationController;
-  late CurvedAnimation offsetCurvedAnimation;
-  late Animation<double> _sizeAnimation;
-  bool aVartar1Show = true;
+  late AnimationController _mAnimationControllerAvartar1;
+  late CurvedAnimation _offsetCurvedAnimationAvartar1;
+  late Animation<double> _sizeAnimationAvartar1;
+  bool _avartarShow1 = false;
 
-  late AnimationController mAnimationController2;
-  late CurvedAnimation offsetCurvedAnimation2;
-  late Animation<double> _sizeAnimation2;
-  bool aVartar2Show = true;
+  late AnimationController _mAnimationControllerAvartar2;
+  late CurvedAnimation _offsetCurvedAnimationAvartar2;
+  late Animation<double> _sizeAnimationAvartar2;
+  bool _avartarShow2 = false;
 
-  late AnimationController mAnimationControllerBubble2;
-  late CurvedAnimation offsetCurvedAnimationBubble2;
+  late AnimationController _mAnimationControllerBubble2;
+  late CurvedAnimation _offsetCurvedAnimationBubble2;
   late Animation<double> _sizeAnimationBubble2;
-  bool aVartar2ShowBubbule = true;
+  bool _showBubbule2 = false;
 
-  late AnimationController mAnimationController3;
-  late CurvedAnimation offsetCurvedAnimation3;
-  late Animation<double> _sizeAnimation3;
+  late AnimationController _mAnimationControllerAvartar3;
+  late CurvedAnimation _offsetCurvedAnimationAvartar3;
+  late Animation<double> _sizeAnimationAvartar3;
   bool aVartar3Show = false;
 
-  late AnimationController mAnimationControllerBubble3;
-  late CurvedAnimation offsetCurvedAnimationBubble3;
+  late AnimationController _mAnimationControllerBubble3;
+  late CurvedAnimation _offsetCurvedAnimationBubble3;
   late Animation<double> _sizeAnimationBubble3;
-  bool aVartar3ShowBubbule = true;
+  bool _showBubbule3 = false;
 
   @override
   void initState() {
     super.initState();
-    mAnimationController = AnimationController(
+    _mAnimationControllerAvartar1 = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    offsetCurvedAnimation =
-        new CurvedAnimation(parent: mAnimationController, curve: new MyCurve());
-    _sizeAnimation = Tween(begin: 25.0, end: 0.0).animate(CurvedAnimation(
-        parent: mAnimationController, curve: Interval(0.5, 1.0)));
-    mAnimationController.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        print("anim reverse");
-        //mAnimationController.repeat(); // 动画结束时，反转从尾到头播放，结束的状态是 dismissed
-      }
-    });
+    _offsetCurvedAnimationAvartar1 =
+        new CurvedAnimation(parent: _mAnimationControllerAvartar1, curve: Interval(0.0, 1.0));
+    _sizeAnimationAvartar1 = Tween(begin: 25.0, end: 0.0).animate(CurvedAnimation(
+        parent: _mAnimationControllerAvartar1, curve: Interval(0.5, 1.0)));
 
     //第二个
-    mAnimationController2 = AnimationController(
+    _mAnimationControllerAvartar2 = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    offsetCurvedAnimation2 = new CurvedAnimation(
-        parent: mAnimationController2, curve: new MyCurve());
-    _sizeAnimation2 = Tween(begin: 25.0, end: 0.0).animate(CurvedAnimation(
-        parent: mAnimationController2, curve: Interval(0.5, 1.0)));
+    _offsetCurvedAnimationAvartar2 = new CurvedAnimation(
+        parent: _mAnimationControllerAvartar2, curve: Interval(0.0, 1.0));
+    _sizeAnimationAvartar2 = Tween(begin: 25.0, end: 0.0).animate(CurvedAnimation(
+        parent: _mAnimationControllerAvartar2, curve: Interval(0.5, 1.0)));
 
-    mAnimationControllerBubble2 = AnimationController(
+    _mAnimationControllerBubble2 = AnimationController(
         duration: const Duration(milliseconds: 900), vsync: this);
-    offsetCurvedAnimationBubble2 = new CurvedAnimation(
-        parent: mAnimationControllerBubble2, curve: new MyCurve());
+    _offsetCurvedAnimationBubble2 = new CurvedAnimation(
+        parent: _mAnimationControllerBubble2, curve: Interval(0.0, 1.0));
     _sizeAnimationBubble2 = Tween(begin: 8.0, end: 0.0).animate(CurvedAnimation(
-        parent: mAnimationControllerBubble2, curve: Interval(0.6, 0.9)));
+        parent: _mAnimationControllerBubble2, curve: Interval(0.6, 0.9)));
 
     //第3个
-    mAnimationController3 = AnimationController(
+    _mAnimationControllerAvartar3 = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    offsetCurvedAnimation3 = new CurvedAnimation(
-        parent: mAnimationController3, curve: new MyCurve());
-    _sizeAnimation3 = Tween(begin: 25.0, end: 0.0).animate(CurvedAnimation(
-        parent: mAnimationController3, curve: Interval(0.5, 1.0)));
+    _offsetCurvedAnimationAvartar3 = new CurvedAnimation(
+        parent: _mAnimationControllerAvartar3, curve: Interval(0.0, 1.0));
+    _sizeAnimationAvartar3 = Tween(begin: 25.0, end: 0.0).animate(CurvedAnimation(
+        parent: _mAnimationControllerAvartar3, curve: Interval(0.5, 1.0)));
     _sizeAnimationBubble3 = Tween(begin: 8.0, end: 0.0).animate(CurvedAnimation(
-        parent: mAnimationController3, curve: Interval(0.6, 0.9)));
+        parent: _mAnimationControllerAvartar3, curve: Interval(0.6, 0.9)));
 
-    mAnimationControllerBubble3 = AnimationController(
+    _mAnimationControllerBubble3 = AnimationController(
         duration: const Duration(milliseconds: 900), vsync: this);
-    offsetCurvedAnimationBubble3 = new CurvedAnimation(
-        parent: mAnimationControllerBubble3, curve: new MyCurve());
+    _offsetCurvedAnimationBubble3 = new CurvedAnimation(
+        parent: _mAnimationControllerBubble3, curve: Interval(0.0, 1.0));
     _sizeAnimationBubble3 = Tween(begin: 8.0, end: 0.0).animate(CurvedAnimation(
-        parent: mAnimationControllerBubble3, curve: Interval(0.6, 0.9)));
+        parent: _mAnimationControllerBubble3, curve: Interval(0.6, 0.9)));
   }
 
   double getCurveXL2RValue(double t) {
@@ -127,18 +120,17 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
     return -t * 120;
   }
 
-  Widget buildRotationTransition() {
+  Widget _buildAvartarAnimWidget() {
     return Center(
         child: AnimatedBuilder(
-      animation: mAnimationController, //添加动画
+      animation: _mAnimationControllerAvartar1, //添加动画
       builder: (context, _) {
         return AnimatedOpacity(
-          opacity: 1 - offsetCurvedAnimation.value,
+          opacity: 1 - _offsetCurvedAnimationAvartar1.value,
           duration: Duration(milliseconds: 600),
           child: Transform.translate(
-            offset: Offset(getCurveXL2RValue(offsetCurvedAnimation.value),
-                getCurveYValue(offsetCurvedAnimation.value)),
-            // 1,0 水平移动 -- 0,1垂直移动
+            offset: Offset(getCurveXL2RValue(_offsetCurvedAnimationAvartar1.value),
+                getCurveYValue(_offsetCurvedAnimationAvartar1.value)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -149,8 +141,8 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
                     color: Colors.red,
                     border: Border.all(width: 1, color: Colors.white),
                   ),
-                  height: _sizeAnimation.value,
-                  width: _sizeAnimation.value,
+                  height: _sizeAnimationAvartar1.value,
+                  width: _sizeAnimationAvartar1.value,
                 ),
               ],
             ),
@@ -167,17 +159,17 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          if (aVartar2Show)
+          if (_avartarShow2)
             AnimatedBuilder(
-              animation: mAnimationController2, //添加动画
+              animation: _mAnimationControllerAvartar2, //添加动画
               builder: (context, _) {
                 return AnimatedOpacity(
-                  opacity: 1 - offsetCurvedAnimation2.value,
+                  opacity: 1 - _offsetCurvedAnimationAvartar2.value,
                   duration: Duration(milliseconds: 600),
                   child: Transform.translate(
                     offset: Offset(
-                        getCurveXR2LValue(offsetCurvedAnimation2.value),
-                        getCurveYValue(offsetCurvedAnimation2.value)),
+                        getCurveXR2LValue(_offsetCurvedAnimationAvartar2.value),
+                        getCurveYValue(_offsetCurvedAnimationAvartar2.value)),
                     // 1,0 水平移动 -- 0,1垂直移动
                     child: Container(
                       decoration: new BoxDecoration(
@@ -185,26 +177,26 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
                         color: Colors.blue,
                         border: Border.all(width: 1, color: Colors.white),
                       ),
-                      height: _sizeAnimation2.value,
-                      width: _sizeAnimation2.value,
+                      height: _sizeAnimationAvartar2.value,
+                      width: _sizeAnimationAvartar2.value,
                     ),
                   ),
                 );
               },
             ),
-          if (aVartar2ShowBubbule)
+          if (_showBubbule2)
             AnimatedBuilder(
-              animation: mAnimationControllerBubble2, //添加动画
+              animation: _mAnimationControllerBubble2, //添加动画
               builder: (context, _) {
                 return AnimatedOpacity(
-                  opacity: 1 - offsetCurvedAnimationBubble2.value,
+                  opacity: 1 - _offsetCurvedAnimationBubble2.value,
                   duration: Duration(milliseconds: 900),
                   child: Transform.translate(
                     offset: Offset(
                         getBubbleCurveXR2LValue(
-                            offsetCurvedAnimationBubble2.value),
+                            _offsetCurvedAnimationBubble2.value),
                         getBubbleCurveYValue(
-                            offsetCurvedAnimationBubble2.value)),
+                            _offsetCurvedAnimationBubble2.value)),
                     // 1,0 水平移动 -- 0,1垂直移动
                     child: Container(
                       decoration: new BoxDecoration(
@@ -233,15 +225,15 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
         children: [
           if (aVartar3Show)
             AnimatedBuilder(
-              animation: mAnimationController3, //添加动画
+              animation: _mAnimationControllerAvartar3, //添加动画
               builder: (context, _) {
                 return AnimatedOpacity(
-                  opacity: 1 - offsetCurvedAnimation3.value,
+                  opacity: 1 - _offsetCurvedAnimationAvartar3.value,
                   duration: Duration(milliseconds: 600),
                   child: Transform.translate(
                     offset: Offset(
-                        getCurveXL2RValue(offsetCurvedAnimation3.value),
-                        getCurveYValue(offsetCurvedAnimation3.value)),
+                        getCurveXL2RValue(_offsetCurvedAnimationAvartar3.value),
+                        getCurveYValue(_offsetCurvedAnimationAvartar3.value)),
                     // 1,0 水平移动 -- 0,1垂直移动
                     child: Container(
                       decoration: new BoxDecoration(
@@ -249,26 +241,26 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
                         color: Colors.green,
                         border: Border.all(width: 1, color: Colors.white),
                       ),
-                      height: _sizeAnimation3.value,
-                      width: _sizeAnimation3.value,
+                      height: _sizeAnimationAvartar3.value,
+                      width: _sizeAnimationAvartar3.value,
                     ),
                   ),
                 );
               },
             ),
-          if (aVartar3ShowBubbule)
+          if (_showBubbule3)
             AnimatedBuilder(
-              animation: mAnimationControllerBubble3, //添加动画
+              animation: _mAnimationControllerBubble3, //添加动画
               builder: (context, _) {
                 return AnimatedOpacity(
-                  opacity: 1 - offsetCurvedAnimationBubble3.value,
+                  opacity: 1 - _offsetCurvedAnimationBubble3.value,
                   duration: Duration(milliseconds: 900),
                   child: Transform.translate(
                     offset: Offset(
                         getBubbleCurveXL2RValue(
-                            offsetCurvedAnimationBubble3.value),
+                            _offsetCurvedAnimationBubble3.value),
                         getBubbleCurveYValue(
-                            offsetCurvedAnimationBubble3.value)),
+                            _offsetCurvedAnimationBubble3.value)),
                     // 1,0 水平移动 -- 0,1垂直移动
                     child: Container(
                       decoration: new BoxDecoration(
@@ -305,36 +297,36 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
                   RaisedButton(
                     child: Text('触发动画'),
                     onPressed: () {
-                      aVartar1Show = true;
+                      _avartarShow1 = true;
                       setState(() {});
-                      mAnimationController.reset();
-                      mAnimationController.forward();// 执行动画
+                      _mAnimationControllerAvartar1.reset();
+                      _mAnimationControllerAvartar1.forward();// 执行动画
                       if(true) {
                         Future.delayed(Duration(milliseconds: 100), () {
-                          aVartar2ShowBubbule = true;
+                          _showBubbule2 = true;
                           setState(() {});
-                          mAnimationControllerBubble2.reset();
-                          mAnimationControllerBubble2.forward();
+                          _mAnimationControllerBubble2.reset();
+                          _mAnimationControllerBubble2.forward();
                         });
                         Future.delayed(Duration(milliseconds: 400), () {
-                          aVartar2Show = true;
+                          _avartarShow2 = true;
                           setState(() {});
-                          mAnimationController2.reset();
-                          mAnimationController2.forward();
+                          _mAnimationControllerAvartar2.reset();
+                          _mAnimationControllerAvartar2.forward();
                         });
                       }
                       if(true) {
                         Future.delayed(Duration(milliseconds: 500), () {
-                          aVartar3ShowBubbule = true;
+                          _showBubbule3 = true;
                           setState(() {});
-                          mAnimationControllerBubble3.reset();
-                          mAnimationControllerBubble3.forward();
+                          _mAnimationControllerBubble3.reset();
+                          _mAnimationControllerBubble3.forward();
                         });
                         Future.delayed(Duration(milliseconds: 800), () {
                           aVartar3Show = true;
                           setState(() {});
-                          mAnimationController3.reset();
-                          mAnimationController3.forward();
+                          _mAnimationControllerAvartar3.reset();
+                          _mAnimationControllerAvartar3.forward();
                         });
                       }
                     },
@@ -345,16 +337,16 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
                   RaisedButton(
                     child: Text('关闭'),
                     onPressed: () {
-                      aVartar1Show = false;
-                      aVartar2Show = false;
-                      aVartar2ShowBubbule = false;
+                      _avartarShow1 = false;
+                      _avartarShow2 = false;
+                      _showBubbule2 = false;
                       aVartar3Show = false;
-                      aVartar3ShowBubbule = false;
-                      mAnimationController.reset();
-                      mAnimationController2.reset();
-                      mAnimationController3.reset();
-                      mAnimationControllerBubble2.reset();
-                      mAnimationControllerBubble3.reset();
+                      _showBubbule3 = false;
+                      _mAnimationControllerAvartar1.reset();
+                      _mAnimationControllerAvartar2.reset();
+                      _mAnimationControllerAvartar3.reset();
+                      _mAnimationControllerBubble2.reset();
+                      _mAnimationControllerBubble3.reset();
                       setState(() {});
                     },
                   ),
@@ -370,25 +362,14 @@ class _CurveFlyAnimState extends State<CurveFlyAnim>
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
-                    if (aVartar1Show) buildRotationTransition(),
+                    if (_avartarShow1) _buildAvartarAnimWidget(),
                     buildRotationTransition2(),
-                    if (aVartar3Show) buildRotationTransition3(),
+                    buildRotationTransition3(),
                   ],
                 ),
               ),
             ],
           )),
     );
-  }
-}
-
-//自定义 一个曲线  当然 也可以使用SDK提供的 如： Curves.fastOutSlowIn    抖动
-class MyCurve extends Curve {
-  const MyCurve([this.period = 1]); //抖动频率
-  final double period;
-
-  @override
-  double transformInternal(double t) {
-    return t;
   }
 }
