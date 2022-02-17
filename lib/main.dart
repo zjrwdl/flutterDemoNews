@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_news_app/catalog.dart';
 import 'package:flutter_news_app/widget/anim/curve_fly_anim.dart';
 import 'package:flutter_news_app/widget/anim/offset_anim.dart';
 import 'package:flutter_news_app/widget/anim/shake_anim.dart';
 import 'package:flutter_news_app/widget/listview_fenye.dart';
 import 'package:flutter_news_app/widget/top_bar_page.dart';
 import 'dart:async';
-import 'package:bugly_crash/bugly.dart';
-import 'package:bugly_crash/buglyLog.dart';
+//import 'package:bugly_crash/bugly.dart';
+//import 'package:bugly_crash/buglyLog.dart';
 import 'dart:io';
 
-/*void main() {
+void main() {
   runApp(MyApp());
-}*/
+}
 
-Future<Null> main() async {
+/*Future<Null> main() async {
   //一、这里配置上报APP未捕获到的异常，业务可以自由决定上报的信息
   FlutterError.onError = (FlutterErrorDetails details) async {
     print("zone current print error");
@@ -28,7 +29,7 @@ Future<Null> main() async {
     Map<String,String> extraInfo = {"key1":"value1","key2":"value2","key3":"value1"};
     await Bugly.postException(type:type,error: error.toString(),stackTrace: stackTrace.toString(),extraInfo:extraInfo);
   });
-}
+}*/
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -49,6 +50,23 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
+      onGenerateRoute: (RouteSettings settings) {
+        var name = settings.name;
+        print("router name is $name");
+        if (name == "AvartarBubbleAnim") {
+          return MaterialPageRoute(
+            builder: (context) {
+              return new AvartarBubbleAnim(avartarList: ["https://img0.baidu.com/it/u=2553242400,2080369090&fm=26&fmt=auto","https://img0.baidu.com/it/u=3872011780,2725169074&fm=26&fmt=auto","https://img2.baidu.com/it/u=1813115944,1577678930&fm=26&fmt=auto"],);
+            },
+          );
+        } else if (name == "ShakeAnim") {
+          return MaterialPageRoute(
+            builder: (context) {
+              return new ShakeAnim();
+            },
+          );
+        }
+      },
     );
   }
 }
@@ -75,14 +93,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     initPlatformState();
-    if(Platform.isAndroid){
+    /*if(Platform.isAndroid){
       initBuglyAndroid();
     }else if(Platform.isIOS){
       initBuglyIos();
-    }
+    }*/
   }
 
-  void initBuglyAndroid(){
+  /*void initBuglyAndroid(){
     //Bugly.setAndroidServerUrl(url: "https://xxxx");
     Bugly.initAndroidCrashReport(appId:"c50a711298",isDebug: false);
     Bugly.setUserId(userId:"androiduser");
@@ -114,13 +132,13 @@ class _MyHomePageState extends State<MyHomePage> {
     BuglyLog.w(tag:"bugly",content:"warnvalue");
     BuglyLog.v(tag:"bugly",content:"verbosevalue");
     BuglyLog.e(tag:"bugly",content:"errorvalue");
-  }
+  }*/
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
+    /*try {
       platformVersion = await Bugly.platformVersion;
     } on PlatformException{
       platformVersion = 'Failed to get platform version.';
@@ -135,12 +153,12 @@ class _MyHomePageState extends State<MyHomePage> {
       String type = "flutter caught error";
       Map<String,String> extraInfo = {"key1":"value1","key2":"value2","key3":"value1"};
       await Bugly.postException(type:type,error:"null exception",stackTrace:e.toString(),extraInfo:extraInfo);
-    }
+    }*/
 
     //(2)测试APP未捕获到的异常上报
     //throw 'bugly flutter uncaught error test';
-    var list = [1,2];
-    list[3] = 1;
+    //var list = [1,2];
+    //list[3] = 1;
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
@@ -148,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      //_platformVersion = platformVersion;
     });
   }
 
@@ -173,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body:
-      new AvartarBubbleAnim(avartarList: ["https://img0.baidu.com/it/u=2553242400,2080369090&fm=26&fmt=auto","https://img0.baidu.com/it/u=3872011780,2725169074&fm=26&fmt=auto","https://img2.baidu.com/it/u=1813115944,1577678930&fm=26&fmt=auto"],),
+      new Catalog(),
     );
   }
 }
