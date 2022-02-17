@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:core';
 
+import 'package:flutter/services.dart';
+
 class Catalog extends StatefulWidget {
 
   @override
@@ -24,7 +26,7 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
       }
       break;
       case 2: {
-
+        Navigator.pushNamed(context, "HorizonOnly");
       }
       break;
     }
@@ -42,7 +44,7 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
       }
       break;
       case 2: {
-
+        name = "HorizonOnly";
       }
       break;
     }
@@ -85,6 +87,13 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
     for(int i = 0; i < size; i++) {
       _currentPageItems?.add(_items[i]);
     }
+    SystemChrome.setPreferredOrientations([
+      //强制横屏
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp
+    ]);
   }
 
   @override

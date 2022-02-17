@@ -5,6 +5,7 @@ import 'package:flutter_news_app/widget/anim/curve_fly_anim.dart';
 import 'package:flutter_news_app/widget/anim/offset_anim.dart';
 import 'package:flutter_news_app/widget/anim/shake_anim.dart';
 import 'package:flutter_news_app/widget/listview_fenye.dart';
+import 'package:flutter_news_app/widget/orientation/HorizonOnly.dart';
 import 'package:flutter_news_app/widget/top_bar_page.dart';
 import 'dart:async';
 //import 'package:bugly_crash/bugly.dart';
@@ -63,6 +64,12 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (context) {
               return new ShakeAnim();
+            },
+          );
+        }  else if (name == "HorizonOnly") {
+          return MaterialPageRoute(
+            builder: (context) {
+              return new HorizonOnly();
             },
           );
         }
