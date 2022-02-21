@@ -16,7 +16,7 @@ class HorizonOnlyState extends State<HorizonOnly> with SingleTickerProviderState
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: Text('Catalog'),
+        title: Text('HorizonOnly'),
       ),
       body: Text("test"),
     );

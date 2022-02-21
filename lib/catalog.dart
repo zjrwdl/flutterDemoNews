@@ -29,6 +29,10 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
         Navigator.pushNamed(context, "HorizonOnly");
       }
       break;
+      case 3: {
+        Navigator.pushNamed(context, "LongPicture");
+      }
+      break;
     }
   }
 
@@ -45,6 +49,10 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
       break;
       case 2: {
         name = "HorizonOnly";
+      }
+      break;
+      case 3: {
+        name = "LongPicture";
       }
       break;
     }
@@ -80,7 +88,7 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabController = new TabController(length: 2, vsync: this);
-    int size = 3;
+    int size = 4;
     _items = List.generate(size, (i) => "item $i");
     _currentPageItems = [];
     _currentPageItems?.clear();
