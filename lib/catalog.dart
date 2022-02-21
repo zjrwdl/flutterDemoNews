@@ -10,7 +10,7 @@ class Catalog extends StatefulWidget {
   createState() => CatalogState();
 }
 
-class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
+class CatalogState extends State<Catalog> {
   TabController? _tabController;
   List<String> _items = [];
   List? _currentPageItems;
@@ -33,6 +33,10 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
         Navigator.pushNamed(context, "LongPicture");
       }
       break;
+      case 4: {
+        Navigator.pushNamed(context, "AstDemo");
+      }
+      break;
     }
   }
 
@@ -53,6 +57,10 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
       break;
       case 3: {
         name = "LongPicture";
+      }
+      break;
+      case 4: {
+        name = "AstDemo";
       }
       break;
     }
@@ -87,8 +95,7 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 2, vsync: this);
-    int size = 4;
+    int size = 5;
     _items = List.generate(size, (i) => "item $i");
     _currentPageItems = [];
     _currentPageItems?.clear();
@@ -106,7 +113,6 @@ class CatalogState extends State<Catalog> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    _tabController?.dispose();
     super.dispose();
   }
 

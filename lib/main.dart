@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_news_app/ast/astDemo.dart';
 import 'package:flutter_news_app/catalog.dart';
 import 'package:flutter_news_app/widget/anim/curve_fly_anim.dart';
 import 'package:flutter_news_app/widget/anim/offset_anim.dart';
@@ -77,6 +78,12 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (context) {
               return new LongPicture();
+            },
+          );
+        } else if (name == "AstDemo") {
+          return MaterialPageRoute(
+            builder: (context) {
+              return new AstDemo();
             },
           );
         }

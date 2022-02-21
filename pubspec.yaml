@@ -33,6 +33,7 @@ dependencies:
   bugly_crash: ^0.0.6
   dio: ^4.0.4 # check for latest version.
   photo_view: ^0.13.0
+  analyzer: ^3.2.0
 
 dev_dependencies:
   flutter_test:
