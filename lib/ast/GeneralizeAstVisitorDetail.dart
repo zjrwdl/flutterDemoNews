@@ -63,4 +63,86 @@ class GeneralizeAstVisitorDetail extends SimpleAstVisitor<Map> {
     Map visitIntegerLiteral(IntegerLiteral node) {
       return {'value': node.value};
     }
+
+    @override
+    Map visitFunctionBody(FunctionBody node) {
+      print("visitFunctionBody");
+      return {
+        "type": "FunctionBody",
+      };
+    }
+
+    @override
+    Map visitFunctionExpression(FunctionExpression node) {
+      print("visitFunctionExpression");
+      return {
+        "type": "FunctionExpression",
+        "typeParameters": node.typeParameters.toString(),
+        'body': node.body.toString(),
+      };
+    }
+
+    @override
+    Map visitFunctionDeclaration(FunctionDeclaration node) {
+      print("visitFunctionDeclaration");
+      return {
+        "type": "FunctionDeclaration",
+        "body": _safeVisitNode(node.functionExpression.body),
+        "parameters": node.functionExpression.parameters?.accept(this),
+      };
+    }
+
+    @override
+    Map visitExpression(Expression node) {
+      return {
+        "type": "Expression",
+      };
+    }
+
+    @override
+    Map visitReturnStatement(ReturnStatement node) {
+      print("visitReturnStatement");
+      return {
+        "type": "ReturnStatement",
+        "argument": _safeVisitNode(node.expression),
+      };
+    }
+
+    @override
+    Map visitSimpleFormalParameter(SimpleFormalParameter node) {
+      print("visitSimpleFormalParameter");
+      return {
+        "type": "SimpleFormalParameter",
+        "paramType": node.type.toString(),
+        "name": node.identifier?.name,
+      };
+    }
+
+    /// 遍历节点
+    Map? _safeVisitNode(AstNode? node) {
+      return node?.accept(this);
+    }
+
+    @override
+    Map visitFormalParameterList(FormalParameterList node) {
+      print("visitFormalParameterList");
+      return {
+        "type": "FormalParameterList",
+        "parameterList": _safeVisitNodeList(node.parameters),
+      };
+    }
+
+    /// 遍历节点列表
+    List<Map> _safeVisitNodeList(NodeList<AstNode> nodes) {
+      List<Map> maps = [];
+      int size = nodes.length;
+      for (int i = 0; i < size; i++) {
+        var node = nodes[i];
+        var res = node.accept(this);
+        if (res != null) {
+          maps.add(res);
+        }
+      }
+      return maps;
+    }
 }
