@@ -5,6 +5,7 @@ import 'package:flutter_news_app/catalog.dart';
 import 'package:flutter_news_app/widget/anim/curve_fly_anim.dart';
 import 'package:flutter_news_app/widget/anim/offset_anim.dart';
 import 'package:flutter_news_app/widget/anim/shake_anim.dart';
+import 'package:flutter_news_app/widget/extended_text_demo.dart';
 import 'package:flutter_news_app/widget/listview_fenye.dart';
 import 'package:flutter_news_app/widget/longPicture.dart';
 import 'package:flutter_news_app/widget/orientation/HorizonOnly.dart';
@@ -84,6 +85,12 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (context) {
               return new AstDemo();
+            },
+          );
+        } else if (name == "ExtendedTextDemo") {
+          return MaterialPageRoute(
+            builder: (context) {
+              return new ExtendedTextDemo();
             },
           );
         }

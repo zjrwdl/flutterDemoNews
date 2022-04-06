@@ -37,6 +37,10 @@ class CatalogState extends State<Catalog> {
         Navigator.pushNamed(context, "AstDemo");
       }
       break;
+      case 5: {
+        Navigator.pushNamed(context, "ExtendedTextDemo");
+      }
+      break;
     }
   }
 
@@ -61,6 +65,10 @@ class CatalogState extends State<Catalog> {
       break;
       case 4: {
         name = "AstDemo";
+      }
+      break;
+      case 5: {
+        name = "ExtendedTextDemo";
       }
       break;
     }
@@ -95,7 +103,7 @@ class CatalogState extends State<Catalog> {
   @override
   void initState() {
     super.initState();
-    int size = 5;
+    int size = 6;
     _items = List.generate(size, (i) => "item $i");
     _currentPageItems = [];
     _currentPageItems?.clear();

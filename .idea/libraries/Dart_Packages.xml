@@ -100,6 +100,20 @@
             </list>
           </value>
         </entry>
+        <entry key="extended_text_field">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/extended_text_field-9.0.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="extended_text_library">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/extended_text_library-8.0.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="fake_async">
           <value>
             <list>
@@ -292,6 +306,8 @@
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/dio-4.0.4/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/extended_text_field-9.0.3/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/extended_text_library-8.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/file-6.1.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_2.8/.pub-cache/hosted/pub.dartlang.org/glob-2.0.2/lib" />
