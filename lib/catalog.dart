@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'dart:core';
 
 import 'package:flutter/services.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class Catalog extends StatefulWidget {
 
@@ -15,7 +16,7 @@ class CatalogState extends State<Catalog> {
   List<String> _items = [];
   List? _currentPageItems;
 
-  void jumpPage(int i) {
+  Future<void> jumpPage(int i) async {
     switch (i) {
       case 0: {
         Navigator.pushNamed(context, "AvartarBubbleAnim");
@@ -38,6 +39,15 @@ class CatalogState extends State<Catalog> {
       }
       break;
       case 5: {
+        try {
+          var list = [1,2];
+          list[6] = 1;
+        } catch (exception, stackTrace) {
+          await Sentry.captureException(
+            exception,
+            stackTrace: stackTrace,
+          );
+        }
         Navigator.pushNamed(context, "ExtendedTextDemo");
       }
       break;

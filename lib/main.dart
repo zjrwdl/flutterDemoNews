@@ -14,9 +14,18 @@ import 'dart:async';
 //import 'package:bugly_crash/bugly.dart';
 //import 'package:bugly_crash/buglyLog.dart';
 import 'dart:io';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  await SentryFlutter.init(
+        (options) {
+      options.dsn = 'https://86be2ccdec2e46c291cc400549b57512@o1318187.ingest.sentry.io/6572265';
+      // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+      // We recommend adjusting this value in production.
+      options.tracesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(MyApp()),
+  );
 }
 
 /*Future<Null> main() async {
@@ -199,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _incrementCounter() {
-    setState(() {
+    setState(() async {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
