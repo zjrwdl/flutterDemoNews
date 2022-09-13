@@ -12,11 +12,12 @@ class ExtendedTextDemoState extends State<ExtendedTextDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: new AppBar(
+        title: Text('ExtendedTextDemo'),
+      ),
       body: Padding(
         padding: EdgeInsets.all(20),
-        child:
-
-        ExtendedTextField(
+        child: ExtendedTextField(
           maxLines: 1000,
          decoration: InputDecoration(
            hintText: "test text",
