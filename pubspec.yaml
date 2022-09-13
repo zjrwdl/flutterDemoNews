@@ -36,6 +36,7 @@ dependencies:
   extended_text_field: 10.1.0
   sentry_flutter: ^6.6.3
   webview_flutter: ^3.0.4
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,7 @@ flutter:
   assets:
     - images/
     - web/icons/
+    - web/svg/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

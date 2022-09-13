@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class NavBar extends StatelessWidget {
   @override
@@ -89,7 +90,7 @@ class DesktopNavBar extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 10,
+                width: 20,
               ),
               Text(
                 "Sign in",
@@ -99,14 +100,21 @@ class DesktopNavBar extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 10,
+                width: 30,
               ),
-              MaterialButton(
-                onPressed: () {},
-                color: Colors.black,
-                child: const Text(
-                  "Sign up",
-                  style: TextStyle(color: Colors.white),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  border: Border.all(color: Colors.white, width: 1),
+                  shape:  BoxShape.rectangle,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
+                child: MaterialButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Sign up",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
@@ -120,23 +128,50 @@ class DesktopNavBar extends StatelessWidget {
 class MobileNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Image.asset(
-          'web/icons/github_icon.png',
-          width: 30,
-          height: 30,
-        ),
-        MaterialButton(
-          onPressed: () {},
-          color: Colors.red,
-          child: const Text(
-            "Tools",
-            style: TextStyle(color: Colors.white),
+    return Container(
+      width: double.infinity,
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Positioned(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(color: Colors.white, width: 1),
+                shape:  BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
+              child: MaterialButton(
+                onPressed: () {},
+                child: const Text(
+                  "Sign up",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            left: 10,
           ),
-        ),
-      ],
+          SizedBox(
+            width: 10,
+          ),
+          Image.asset(
+            'web/icons/github_icon.png',
+            width: 50,
+            height: 50,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Positioned(
+            child: SvgPicture.asset(
+              "web/svg/more_icon.svg",
+              width: 30,
+              height: 30,
+            ),
+            right: 10,
+          ),
+        ],
+      ),
     );
   }
 }
