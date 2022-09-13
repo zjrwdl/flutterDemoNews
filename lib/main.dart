@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news_app/ast/astDemo.dart';
 import 'package:flutter_news_app/catalog.dart';
 import 'package:flutter_news_app/util/Constants.dart';
+import 'package:flutter_news_app/web/github/home_page.dart';
 import 'package:flutter_news_app/widget/anim/curve_fly_anim.dart';
 import 'package:flutter_news_app/widget/anim/shake_anim.dart';
 import 'package:flutter_news_app/widget/extended_text_demo.dart';
 import 'package:flutter_news_app/widget/longPicture.dart';
 import 'package:flutter_news_app/widget/orientation/HorizonOnly.dart';
-import 'package:flutter_news_app/widget/web/webview_demo.dart';
+import 'package:flutter_news_app/widget/web_view/webview_demo.dart';
 import 'dart:async';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -87,6 +88,12 @@ class MyApp extends StatelessWidget {
               return new WebViewExample();
             },
           );
+        } else if (name == Constants.webGithubExample) {
+          return MaterialPageRoute(
+            builder: (context) {
+              return new GithubHomepage();
+            },
+          );
         }
       },
     );
@@ -138,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body:
-      new Catalog(),
+      new GithubHomepage(),
     );
   }
 }
