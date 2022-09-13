@@ -51,6 +51,11 @@ class CatalogState extends State<Catalog> {
           name = Constants.extendedTextDemo;
         }
         break;
+      case 6:
+        {
+          name = Constants.webViewExample;
+        }
+        break;
     }
     return name;
   }
@@ -79,7 +84,7 @@ class CatalogState extends State<Catalog> {
   @override
   void initState() {
     super.initState();
-    int size = 6;
+    int size = 7;
     _items = List.generate(size, (i) => "item $i");
     _currentPageItems = [];
     _currentPageItems?.clear();

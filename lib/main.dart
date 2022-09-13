@@ -7,6 +7,7 @@ import 'package:flutter_news_app/widget/anim/shake_anim.dart';
 import 'package:flutter_news_app/widget/extended_text_demo.dart';
 import 'package:flutter_news_app/widget/longPicture.dart';
 import 'package:flutter_news_app/widget/orientation/HorizonOnly.dart';
+import 'package:flutter_news_app/widget/web/webview_demo.dart';
 import 'dart:async';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -78,6 +79,12 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (context) {
               return new ExtendedTextDemo();
+            },
+          );
+        } else if (name == Constants.webViewExample) {
+          return MaterialPageRoute(
+            builder: (context) {
+              return new WebViewExample();
             },
           );
         }

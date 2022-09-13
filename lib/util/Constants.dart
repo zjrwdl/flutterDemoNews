@@ -5,4 +5,5 @@ class Constants {
   static const String longPicture = "longPicture";
   static const String astDemo = "astDemo";
   static const String extendedTextDemo = "extendedTextDemo";
+  static const String webViewExample = "webViewExample";
 }

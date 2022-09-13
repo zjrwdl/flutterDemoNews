@@ -5,3 +5,6 @@ package_info_plus_macos=/Users/rockypzhang/zhp/dev/sdk/flutter/flutter_3.0.5/.pu
 package_info_plus_web=/Users/rockypzhang/zhp/dev/sdk/flutter/flutter_3.0.5/.pub-cache/hosted/pub.dartlang.org/package_info_plus_web-1.0.5/
 package_info_plus_windows=/Users/rockypzhang/zhp/dev/sdk/flutter/flutter_3.0.5/.pub-cache/hosted/pub.dartlang.org/package_info_plus_windows-1.0.5/
 sentry_flutter=/Users/rockypzhang/zhp/dev/sdk/flutter/flutter_3.0.5/.pub-cache/hosted/pub.dartlang.org/sentry_flutter-6.6.3/
+webview_flutter=/Users/rockypzhang/zhp/dev/sdk/flutter/flutter_3.0.5/.pub-cache/hosted/pub.dartlang.org/webview_flutter-3.0.4/
+webview_flutter_android=/Users/rockypzhang/zhp/dev/sdk/flutter/flutter_3.0.5/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.10.0/
+webview_flutter_wkwebview=/Users/rockypzhang/zhp/dev/sdk/flutter/flutter_3.0.5/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.9.4/
