@@ -7,4 +7,6 @@ class Constants {
   static const String extendedTextDemo = "extendedTextDemo";
   static const String webViewExample = "webViewExample";
   static const String webGithubExample = "webGithubExample";
+  static const String devToolSetting = "devToolSetting";
+  static const String devToolMemoryLeakExample = "devToolMemoryLeakExample";
 }
