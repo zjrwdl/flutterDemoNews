@@ -37,6 +37,11 @@ dependencies:
   sentry_flutter: ^6.6.3
   webview_flutter: ^3.0.4
   flutter_svg: ^0.22.0
+  tencent_flutter_devtools:
+    hosted:
+      name: tencent_flutter_devtools
+      url: http://pub.oa.com
+    version: 0.3.0
 
 dev_dependencies:
   flutter_test:
