@@ -18,7 +18,7 @@ void main() {
   EventMonitorWidgetsFlutterBinding.ensureInitialized();
   runZonedGuarded<Future<Null>>(() async {
     FrameworkCore.init(MyDataReporter()).then((value) {
-      runApp(MyHomePage());
+      runApp(MyApp());
     });
   }, (error, stack) {
     log('${error.toString()}\n${stack.toString()}', LogLevel.error);
@@ -27,12 +27,12 @@ void main() {
   }));
 }
 
-class MyHomePage extends StatefulWidget {
+class MyApp extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyAppState createState() => _MyAppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
