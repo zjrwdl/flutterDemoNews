@@ -61,16 +61,6 @@ class CatalogState extends State<Catalog> {
           name = Constants.webGithubExample;
         }
         break;
-      case 8:
-        {
-          name = Constants.devToolMemoryLeakExample;
-        }
-        break;
-      case 9:
-        {
-          name = Constants.devToolSetting;
-        }
-        break;
     }
     return name;
   }
@@ -99,7 +89,7 @@ class CatalogState extends State<Catalog> {
   @override
   void initState() {
     super.initState();
-    int size = 10;
+    int size = 8;
     _items = List.generate(size, (i) => "item $i");
     _currentPageItems = [];
     _currentPageItems?.clear();
