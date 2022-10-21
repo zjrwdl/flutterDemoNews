@@ -4,7 +4,6 @@ import 'package:flutter_news_app/route.dart';
 import 'dart:async';
 import 'package:tencent_flutter_devtools/tencent_flutter_devtools.dart';
 import 'dev_tool/dev_tool_data_reporter.dart';
-import 'dev_tool/dev_tools_mgr.dart';
 
 void main() {
   // await SentryFlutter.init(
@@ -18,9 +17,7 @@ void main() {
   // );
   EventMonitorWidgetsFlutterBinding.ensureInitialized();
   runZonedGuarded<Future<Null>>(() async {
-    PlatformDispatcherMgr.instance.init();
     FrameworkCore.init(MyDataReporter()).then((value) {
-      DevToolsMgr.singleton.onFrameWorkInit();
       runApp(MyApp());
     });
   }, (error, stack) {
