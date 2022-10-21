@@ -3,9 +3,11 @@ import 'package:flutter_news_app/catalog.dart';
 import 'package:flutter_news_app/route.dart';
 import 'dart:async';
 import 'package:tencent_flutter_devtools/tencent_flutter_devtools.dart';
+
 import 'dev_tool/dev_tool_data_reporter.dart';
 
-void main() {
+
+void main(){
   // await SentryFlutter.init(
   //       (options) {
   //     options.dsn = '';
@@ -27,15 +29,17 @@ void main() {
   }));
 }
 
+
 class MyHomePage extends StatefulWidget {
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   @override
   void initState() {
-    super.initState();
     FrameworkCore.onAppInitState(context);
   }
 
