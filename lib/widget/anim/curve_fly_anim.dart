@@ -226,7 +226,7 @@ class _AvartarBubbleAnimState extends State<AvartarBubbleAnim>
             ), //
             Row(
               children: [
-                RaisedButton(
+                TextButton(
                   child: Text('触发动画'),
                   onPressed: () {
                     _avartarShow1 = true;
@@ -266,7 +266,7 @@ class _AvartarBubbleAnimState extends State<AvartarBubbleAnim>
                 SizedBox(
                   width: 10,
                 ),
-                RaisedButton(
+                TextButton(
                   child: Text('关闭'),
                   onPressed: () {
                     _avartarShow1 = false;

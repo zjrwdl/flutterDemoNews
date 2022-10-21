@@ -60,7 +60,7 @@ class _OffsetAnimState extends State<OffsetAnim> with SingleTickerProviderStateM
           child: Column(
             children: <Widget>[
               SizedBox(height: 100,),//
-              RaisedButton(
+              TextButton(
                 child: Text('data'),
                 onPressed: (){
                   if (mAnimationController.status == AnimationStatus.completed) {

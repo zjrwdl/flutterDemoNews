@@ -50,7 +50,7 @@ class _ShakeAnimState extends State<ShakeAnim> with SingleTickerProviderStateMix
               SizedBox(height: 100,),//
               Row(
                 children: [
-                  RaisedButton(
+                  TextButton(
                     child: Text('触发动画'),
                     onPressed: (){
                       mAnimationController.reset();
@@ -58,7 +58,7 @@ class _ShakeAnimState extends State<ShakeAnim> with SingleTickerProviderStateMix
                     },
                   ),
                   SizedBox(width: 10,),
-                  RaisedButton(
+                  TextButton(
                     child: Text('关闭'),
                     onPressed: (){
                       mAnimationController.reset();
