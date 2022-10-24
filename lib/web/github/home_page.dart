@@ -17,7 +17,7 @@ class GithubHomepageState extends State{
   static const String rpcUrl = 'http://localhost:8545';
 
   void initState() {
-    _testWeb3SendTrans();
+    // _testWeb3SendTrans();
   }
 
   @override
