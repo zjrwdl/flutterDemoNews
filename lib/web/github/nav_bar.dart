@@ -110,7 +110,9 @@ class DesktopNavBar extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                 ),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);//临时用一下作为返回功能
+                  },
                   child: const Text(
                     "Sign up",
                     style: TextStyle(color: Colors.white),
