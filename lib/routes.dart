@@ -10,6 +10,7 @@ import 'package:flutter_news_app/widget/longPicture.dart' deferred as long_pictu
 import 'package:flutter_news_app/widget/orientation/HorizonOnly.dart' deferred as horizon_Demo;
 import 'package:flutter_news_app/widget/web_view/webview_demo.dart' deferred as web_view;
 import 'package:flutter_news_app/web/github/home_page.dart' deferred as web_app;
+import 'package:flutter_news_app/web/flutter_web3/flutter_web3_api.dart' deferred as flutter_web3_app;
 import 'deferred_widget.dart';
 
 class Path {
@@ -26,7 +27,8 @@ class RouterConfiguration {
       Constants.webGithubExample,
       (context) {
         return DeferredWidget(
-            web_app.loadLibrary, () => web_app.GithubHomepage(),
+            //web_app.loadLibrary, () => web_app.GithubHomepage(),
+            flutter_web3_app.loadLibrary, () => flutter_web3_app.FlutterWeb3Home(),
             // ignore: prefer_const_constructors
             placeholder: const DeferredLoadingPlaceholder(name: 'WebApp'));
       },

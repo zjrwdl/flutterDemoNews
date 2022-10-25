@@ -121,10 +121,24 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_web3">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/flutter_web3-2.1.9/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_web_plugins">
           <value>
             <list>
               <option value="$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/packages/flutter_web_plugins/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="get">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/get-4.6.5/lib" />
             </list>
           </value>
         </entry>
@@ -434,6 +448,8 @@
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/ffi-2.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/file-6.1.4/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/flutter_svg-0.22.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/flutter_web3-2.1.9/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/get-4.6.5/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/glob-2.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/http-0.13.5/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../sdk/flutter/flutter_3.3.4/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.2/lib" />

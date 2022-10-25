@@ -38,7 +38,9 @@ dependencies:
   webview_flutter: ^3.0.4
   flutter_svg: ^0.22.0
   web3dart: ^2.4.1
+  flutter_web3: ^2.1.9
   async: ^2.9.0
+  get: ^4.6.5
 
 dev_dependencies:
 #  flutter_test:
