@@ -110,7 +110,37 @@ class HomeController extends GetxController {
     }
   }
 
-  testSwitchChain() async {}
+  checkAndAddNetwork() async {
+    print("checkAndAddNetwork Ethereum.provider");
+    print("checkAndAddNetwork Ethereum.provider is ${Ethereum.provider}");
+    await Ethereum.provider!.walletAddChain(
+      chainId: 56,
+      chainName: 'BNB Chain',
+      nativeCurrency:
+      CurrencyParams(name: 'BNB', symbol: 'BNB', decimals: 18),
+      rpcUrls: ['https://bsc-mainnet.nodereal.io/v1/64a9df0874fb4a93b9d0a3849de012d3'],
+    );
+
+    // await Ethereum.provider!.walletAddChain(
+    //   chainId: 137,
+    //   chainName: 'Polygon',
+    //   nativeCurrency:
+    //   CurrencyParams(name: 'MATIC', symbol: 'MATIC', decimals: 18),
+    //   rpcUrls: ['https://polygon-rpc.com/'],
+    // );
+  }
+
+  switchNetwork() async {
+    await Ethereum.provider!.walletSwitchChain(137, () async {
+      await Ethereum.provider!.walletAddChain(
+        chainId: 137,
+        chainName: 'Polygon',
+        nativeCurrency:
+        CurrencyParams(name: 'MATIC', symbol: 'MATIC', decimals: 18),
+        rpcUrls: ['https://polygon-rpc.com/'],
+      );
+    });
+  }
 
   @override
   void onInit() {
@@ -134,7 +164,7 @@ class MetaMaskLoginHome extends StatelessWidget {
               print("h.currentChain is ${h.currentChain}");
               if (h.isConnected)
                 shown =
-                    'You\'re connected! address:${h.currentAddress} network:';
+                    'connected!\n address:${h.currentAddress} \n chainId:${h.currentChain}';
               else if (Ethereum.isSupported)
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -172,8 +202,11 @@ class MetaMaskLoginHome extends StatelessWidget {
                   onPressed: h.showBasicInfo, child: Text('showBasicInfo')),
               Container(height: 10),
               TextButton(
-                  onPressed: h.testSwitchChain,
-                  child: Text('test switch chain')),
+                  onPressed: h.checkAndAddNetwork,
+                  child: Text('add chain network')),
+              TextButton(
+                  onPressed: h.switchNetwork,
+                  child: Text('switch chain network')),
             ],
             Container(height: 30),
             if (!h.isConnected && !h.wc.connected && !h.wcConnected)

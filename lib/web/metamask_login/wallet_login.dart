@@ -36,8 +36,10 @@ class WalletLogin {
         if(typeof window.ethereum.providers !== 'undefined' && window.ethereum.providers.length > 1){
           var walletProvider;
           if("${walletType.name}" == "coinbase") {
+            console.log('walletLogin want to login coinbase!');
             walletProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
           }else {
+            console.log('walletLogin want to login matamask!');
             walletProvider = window.ethereum.providers.find((provider) => provider.isMetaMask);
           }
           var provider = new ethers.providers.Web3Provider(walletProvider);
@@ -61,4 +63,5 @@ class WalletLogin {
       return false;
     }
   }
+
 }

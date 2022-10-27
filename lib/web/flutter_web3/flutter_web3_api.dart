@@ -13,8 +13,7 @@ class HomeController extends GetxController {
 
   bool wcConnected = false;
 
-  //static const OPERATING_CHAIN = 56;
-  static const OPERATING_CHAIN = 1337; // meemo modify for test
+  static const OPERATING_CHAIN = 56;
 
   final wc = WalletConnectProvider.binance();
 
@@ -22,10 +21,11 @@ class HomeController extends GetxController {
 
   connectProvider() async {
     if (Ethereum.isSupported) {
-      final accs = await ethereum!.requestAccount();
+      final accs = await Ethereum.provider!.requestAccount();
       if (accs.isNotEmpty) {
         currentAddress = accs.first;
-        currentChain = await ethereum!.getChainId();
+        currentChain = await Ethereum.provider!.getChainId();
+        print("currentChain is $currentChain");
       }
 
       update();
@@ -57,11 +57,11 @@ class HomeController extends GetxController {
     if (Ethereum.isSupported) {
       connectProvider();
 
-      ethereum!.onAccountsChanged((accs) {
+      Ethereum.provider!.onAccountsChanged((accs) {
         clear();
       });
 
-      ethereum!.onChainChanged((chain) {
+      Ethereum.provider!.onChainChanged((chain) {
         clear();
       });
     }
@@ -85,15 +85,24 @@ class HomeController extends GetxController {
   }
 
   testSwitchChain() async {
-    await ethereum!.walletSwitchChain(97, () async {
-      await ethereum!.walletAddChain(
-        chainId: 97,
-        chainName: 'Binance Testnet',
-        nativeCurrency:
-        CurrencyParams(name: 'BNB', symbol: 'BNB', decimals: 18),
-        rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
-      );
-    });
+    print("testSwitchChain Ethereum.provider! is ${Ethereum.provider!}");
+    await Ethereum.provider!.walletAddChain(
+      chainId: 137,
+      chainName: 'Polygon',
+      nativeCurrency:
+      CurrencyParams(name: 'MATIC', symbol: 'MATIC', decimals: 18),
+      rpcUrls: ['https://polygon-rpc.com/'],
+    );
+
+    // await Ethereum.provider!.walletSwitchChain(1337, () async {
+    //   await Ethereum.provider!.walletAddChain(
+    //     chainId: 1337,
+    //     chainName: 'http://localhost:8545',
+    //     nativeCurrency:
+    //     CurrencyParams(name: 'ETH-02', symbol: 'ETH-02', decimals: 18),
+    //     rpcUrls: ['http://localhost:8545'],
+    //   );
+    // });
   }
 
   @override
