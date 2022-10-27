@@ -41,11 +41,10 @@ class WalletLogin {
             walletProvider = window.ethereum.providers.find((provider) => provider.isMetaMask);
           }
           var provider = new ethers.providers.Web3Provider(walletProvider);
-          await provider.send("eth_requestAccounts", []);
         }else{
           var provider = new ethers.providers.Web3Provider(window.ethereum);
-          await provider.send("eth_requestAccounts", []);
         }
+        await provider.send("eth_requestAccounts", []);
         window.address = await provider.getSigner().getAddress();
         window.chainId = await provider.send("eth_chainId");
       }

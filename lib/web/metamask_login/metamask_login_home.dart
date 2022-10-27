@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web3/flutter_web3.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'wallet_login.dart';
 
@@ -19,13 +20,17 @@ class HomeController extends GetxController {
 
   var metamask = WalletLogin();
 
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   connectMetaMaskProvider() async {
+    final SharedPreferences prefs = await _prefs;
     metamask.login(WalletType.metamask).then((success) {
       if (success) {
         currentAddress = metamask.address!;
         currentChain = metamask.chainId!;
         debugPrint('metamask address: ${metamask.address}');
         debugPrint('metamask chainId: ${metamask.chainId}');
+        prefs.setString("login_address_key", currentAddress);
       } else {
         debugPrint('metamask login failed');
       }
@@ -68,7 +73,12 @@ class HomeController extends GetxController {
     update();
   }
 
-  init() {}
+  init() async {
+    final SharedPreferences prefs = await _prefs;
+    currentAddress = prefs.getString("login_address_key") ?? "";
+    print("init current address is $currentAddress Ethereum.isSupported is ${Ethereum.isSupported}");
+    update();
+  }
 
   getLatestBlock() async {
     try {
