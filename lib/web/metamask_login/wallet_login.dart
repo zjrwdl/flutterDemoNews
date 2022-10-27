@@ -51,13 +51,11 @@ class WalletLogin {
       }
       walletLogin();
       ''');
-      print("walletLogin eval end");
       while (_address == null) {
         await Future.delayed(const Duration(milliseconds: 100));
       }
       address = _address.toString();
       chainId = int.parse(_chainId);
-      print("walletLogin login success address is $address chainId is $chainId");
       return true;
     } catch (e) {
       print("walletLogin login e is $e");
