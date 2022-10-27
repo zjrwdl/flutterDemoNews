@@ -11,6 +11,8 @@ import 'package:flutter_news_app/widget/orientation/HorizonOnly.dart' deferred a
 import 'package:flutter_news_app/widget/web_view/webview_demo.dart' deferred as web_view;
 import 'package:flutter_news_app/web/github/home_page.dart' deferred as web_app;
 import 'package:flutter_news_app/web/flutter_web3/flutter_web3_api.dart' deferred as flutter_web3_app;
+import 'package:flutter_news_app/web/wallet_connect/wallet_connect_api.dart' deferred as wallet_connect_app;
+import 'package:flutter_news_app/web/metamask_login/metamask_login_home.dart' deferred as metamask_login_home_app;
 import 'deferred_widget.dart';
 
 class Path {
@@ -28,7 +30,9 @@ class RouterConfiguration {
       (context) {
         return DeferredWidget(
             //web_app.loadLibrary, () => web_app.GithubHomepage(),
-            flutter_web3_app.loadLibrary, () => flutter_web3_app.FlutterWeb3Home(),
+            // wallet_connect_app.loadLibrary, () => wallet_connect_app.WalletConnectHome(),
+            //flutter_web3_app.loadLibrary, () => flutter_web3_app.FlutterWeb3Home(),
+            metamask_login_home_app.loadLibrary, () => metamask_login_home_app.MetaMaskLoginHome(),
             // ignore: prefer_const_constructors
             placeholder: const DeferredLoadingPlaceholder(name: 'WebApp'));
       },

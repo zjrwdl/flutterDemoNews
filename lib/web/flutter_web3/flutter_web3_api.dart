@@ -79,7 +79,9 @@ class HomeController extends GetxController {
   }
 
   test() async {
-    print("address is ${await provider!.getSigner().getAddress()}");
+    String address = await provider!.getSigner().getAddress();
+    print("address is $address");
+    print("balance is ${await provider!.getBalance(address)}");
   }
 
   testSwitchChain() async {
@@ -115,7 +117,7 @@ class FlutterWeb3Home extends StatelessWidget {
               var shown = '';
               print("h.currentChain is ${h.currentChain}");
               if (h.isConnected && h.isInOperatingChain)
-                shown = 'You\'re connected!';
+                shown = 'You\'re connected!/n ${h.currentAddress}';
               else if (h.isConnected && !h.isInOperatingChain)
                 shown = 'Wrong chain[${h.currentChain}]! Please connect to BSC. (56)';
               else if (Ethereum.isSupported)
