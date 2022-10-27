@@ -22,6 +22,8 @@ class HomeController extends GetxController {
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+  static const loginAddressKey = "loginAddressKey";
+
   connectMetaMaskProvider() async {
     final SharedPreferences prefs = await _prefs;
     metamask.login(WalletType.metamask).then((success) {
@@ -30,7 +32,7 @@ class HomeController extends GetxController {
         currentChain = metamask.chainId!;
         debugPrint('metamask address: ${metamask.address}');
         debugPrint('metamask chainId: ${metamask.chainId}');
-        prefs.setString("login_address_key", currentAddress);
+        prefs.setString(loginAddressKey, currentAddress);
       } else {
         debugPrint('metamask login failed');
       }
@@ -64,19 +66,21 @@ class HomeController extends GetxController {
     update();
   }
 
-  clear() {
+  disconnect() async {
     currentAddress = '';
     currentChain = -1;
     wcConnected = false;
     web3wc = null;
-
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString(loginAddressKey, currentAddress);
     update();
   }
 
   init() async {
     final SharedPreferences prefs = await _prefs;
-    currentAddress = prefs.getString("login_address_key") ?? "";
-    print("init current address is $currentAddress Ethereum.isSupported is ${Ethereum.isSupported}");
+    currentAddress = prefs.getString(loginAddressKey) ?? "";
+    print(
+        "init current address is $currentAddress Ethereum.isSupported is ${Ethereum.isSupported}");
     update();
   }
 
@@ -138,7 +142,9 @@ class MetaMaskLoginHome extends StatelessWidget {
                     OutlinedButton(
                         child: Text('login metamask'),
                         onPressed: h.connectMetaMaskProvider),
-                    SizedBox(width: 20,),
+                    SizedBox(
+                      width: 20,
+                    ),
                     OutlinedButton(
                         child: Text('login coinbase'),
                         onPressed: h.connectCoinbaseProvider),
@@ -152,6 +158,9 @@ class MetaMaskLoginHome extends StatelessWidget {
             }),
             Container(height: 30),
             if (h.isConnected) ...[
+              OutlinedButton(
+                  child: Text('disConnect'), onPressed: h.disconnect),
+              Container(height: 10),
               TextButton(
                   onPressed: h.getLatestBlock, child: Text('get latest block')),
               Container(height: 10),
@@ -167,15 +176,17 @@ class MetaMaskLoginHome extends StatelessWidget {
                   child: Text('test switch chain')),
             ],
             Container(height: 30),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OutlinedButton(
-                    child: Text('login WalletConnect'), onPressed: h.connectWC),
-                Container(height: 10),
-                Text('Wallet Connect connected: ${h.wcConnected}'),
-              ],
-            ),
+            if (!h.isConnected && !h.wc.connected && !h.wcConnected)
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  OutlinedButton(
+                      child: Text('login WalletConnect'),
+                      onPressed: h.connectWC),
+                  Container(height: 10),
+                  Text('Wallet Connect connected: ${h.wcConnected}'),
+                ],
+              ),
             Container(height: 30),
             if (h.wcConnected && h.wc.connected) ...[
               Text(h.wc.walletMeta.toString()),
