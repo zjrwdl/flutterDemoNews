@@ -9,6 +9,7 @@
 import 'package:package_info_plus/src/package_info_plus_web.dart';
 import 'package:sentry_flutter/sentry_flutter_web.dart';
 import 'package:shared_preferences_web/shared_preferences_web.dart';
+import 'package:toast/toast_web.dart';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
@@ -17,5 +18,6 @@ void registerPlugins(Registrar registrar) {
   PackageInfoPlusWebPlugin.registerWith(registrar);
   SentryFlutterWeb.registerWith(registrar);
   SharedPreferencesPlugin.registerWith(registrar);
+  ToastWebPlugin.registerWith(registrar);
   registrar.registerMessageHandler();
 }

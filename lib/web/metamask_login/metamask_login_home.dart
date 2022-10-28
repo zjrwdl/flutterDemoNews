@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'wallet_login.dart';
+import 'package:toast/toast.dart';
 
 class HomeController extends GetxController {
   bool get isConnected => Ethereum.isSupported && currentAddress.isNotEmpty;
@@ -23,6 +24,7 @@ class HomeController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   static const loginAddressKey = "loginAddressKey";
+
 
   connectMetaMaskProvider() async {
     final SharedPreferences prefs = await _prefs;
@@ -77,6 +79,8 @@ class HomeController extends GetxController {
   }
 
   init() async {
+    print("init Ethereum.provider");
+    print("init Ethereum.provider is ${Ethereum.provider}");
     final SharedPreferences prefs = await _prefs;
     currentAddress = prefs.getString(loginAddressKey) ?? "";
     print(
@@ -161,23 +165,34 @@ class MetaMaskLoginHome extends StatelessWidget {
             Container(height: 10),
             Builder(builder: (_) {
               var shown = '';
-              print("h.currentChain is ${h.currentChain}");
+              print("h.currentChain is ${h.currentChain} h.metamask.errorCode is ${h.metamask.errorCode}");
+              if(h.metamask.errorCode == WalletLoginErrorCode.extensionNotInstall.index)
+                shown = "login fail : [pls install wallet chrome extension]";
               if (h.isConnected)
                 shown =
                     'connected!\n address:${h.currentAddress} \n chainId:${h.currentChain}';
               else if (Ethereum.isSupported)
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                return Column(
                   children: [
-                    OutlinedButton(
-                        child: Text('login metamask'),
-                        onPressed: h.connectMetaMaskProvider),
-                    SizedBox(
-                      width: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        OutlinedButton(
+                            child: Text('login metamask'),
+                            onPressed: h.connectMetaMaskProvider),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        OutlinedButton(
+                            child: Text('login coinbase'),
+                            onPressed: h.connectCoinbaseProvider),
+                      ],
                     ),
-                    OutlinedButton(
-                        child: Text('login coinbase'),
-                        onPressed: h.connectCoinbaseProvider),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(shown,
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                   ],
                 );
               else
